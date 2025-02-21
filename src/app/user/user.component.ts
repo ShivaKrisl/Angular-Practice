@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { DUMMY_USERS } from '../dummy_users';
 
 const randomIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -10,16 +10,21 @@ const randomIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  selectedUser = DUMMY_USERS[randomIndex];
+  selectedUser = signal(DUMMY_USERS[randomIndex]);
 
-  get getImagePath(): string {
-    return `assets/users/${this.selectedUser.avatar}`;
-  }
+  // better way of writing functions that uses signals in its body
+  getImagePath = computed(() => {
+    return `assets/users/${this.selectedUser().avatar}`;
+  });
+
+  // get getImagePath(): string {
+  //   return `assets/users/${this.selectedUser().avatar}`;
+  // }
 
   // This method will be called when the user selects a user from the list
   onSelectUser(): void {
     const randIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser = DUMMY_USERS[randIndex]; // as soon as button is clicked, a new user will be selected
-    console.log('User selected:', this.selectedUser);
+    // Update the selected user
+    this.selectedUser.set(DUMMY_USERS[randIndex]);
   }
 }
