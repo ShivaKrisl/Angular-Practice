@@ -18,6 +18,8 @@ export class UserComponent {
 
   // This method will be called when the user selects a user from the list
   onSelectUser(): void {
+    const randIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUser = DUMMY_USERS[randIndex]; // as soon as button is clicked, a new user will be selected
     console.log('User selected:', this.selectedUser);
   }
 }
