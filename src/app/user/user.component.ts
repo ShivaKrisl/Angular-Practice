@@ -12,7 +12,12 @@ const randomIndex: number = Math.floor(Math.random() * DUMMY_USERS.length);
 export class UserComponent {
   selectedUser = DUMMY_USERS[randomIndex];
 
-  get getImagePath() {
+  get getImagePath(): string {
     return `assets/users/${this.selectedUser.avatar}`;
+  }
+
+  // This method will be called when the user selects a user from the list
+  onSelectUser(): void {
+    console.log('User selected:', this.selectedUser);
   }
 }
