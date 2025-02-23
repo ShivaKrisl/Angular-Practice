@@ -1,4 +1,11 @@
-import { Component, computed, Input, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  Input,
+  input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { DUMMY_USERS } from '../dummy_users';
 
 @Component({
@@ -10,13 +17,18 @@ import { DUMMY_USERS } from '../dummy_users';
 export class UserComponent {
   // @Input({ required: true }) avatar!: string;
   // @Input({ required: true }) name!: string;
-
+  id = input.required<string>();
   avatar = input.required<string>();
   name = input.required<string>();
+
+  // custom event
+  @Output() select = new EventEmitter();
 
   ImagePath = computed(() => {
     return `assets/users/${this.avatar()}`;
   });
 
-  onSelectUser(): void {}
+  onSelectUser(): void {
+    this.select.emit(this.id()); // pass user id to parent component
+  }
 }

@@ -13,4 +13,9 @@ import { DUMMY_USERS } from './dummy_users';
 export class AppComponent {
   title = 'first-angular-app';
   users = DUMMY_USERS;
+
+  // event handler
+  selectUserTasks(id: string) {
+    console.log('User ID:', id);
+  }
 }
