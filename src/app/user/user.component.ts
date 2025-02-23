@@ -5,6 +5,7 @@ import {
   input,
   Output,
   EventEmitter,
+  output,
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy_users';
 
@@ -22,7 +23,8 @@ export class UserComponent {
   name = input.required<string>();
 
   // custom event
-  @Output() select = new EventEmitter();
+  // @Output() select = new EventEmitter();
+  select = output<string>();
 
   ImagePath = computed(() => {
     return `assets/users/${this.avatar()}`;
