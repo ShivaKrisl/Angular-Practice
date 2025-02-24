@@ -15,7 +15,7 @@
         <app-user
           [id]="users[1].id"
           [avatar]="users[1].avatar"
-          [name]="users[0].name"
+          [name]="users[1].name"
           (select)="selectUserTasks($event)"
         />
       </li>
@@ -36,6 +36,6 @@
         />
       </li>
     </ul>
-    <h1>Tasks of User</h1>
+    <app-tasks [name]="SelectedUser.name"></app-tasks>
   </main>
 </router-outlet>
