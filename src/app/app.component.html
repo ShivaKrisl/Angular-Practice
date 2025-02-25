@@ -3,19 +3,16 @@
   <app-header />
   <main>
     <ul id="users">
+      @for(u of users; track u.id){
       <li>
-        <app-user [user]="users[0]" (select)="selectUserTasks($event)" />
+        <app-user [user]="u" (select)="selectUserTasks($event)" />
       </li>
-      <li>
-        <app-user [user]="users[1]" (select)="selectUserTasks($event)" />
-      </li>
-      <li>
-        <app-user [user]="users[2]" (select)="selectUserTasks($event)" />
-      </li>
-      <li>
-        <app-user [user]="users[3]" (select)="selectUserTasks($event)" />
-      </li>
+      }
     </ul>
-    <app-tasks [name]="SelectedUser.name"></app-tasks>
+    @if(SelectedUser){
+    <app-tasks [name]="SelectedUser.name" />
+    } @else {
+    <p id="fallback">Select a user to see their tasks</p>
+    }
   </main>
 </router-outlet>

@@ -15,10 +15,10 @@ export class AppComponent {
   title = 'first-angular-app';
   users = DUMMY_USERS;
 
-  selectedUserId: string = 'u1';
+  selectedUserId?: string;
 
   get SelectedUser() {
-    return this.users.find((user) => user.id === this.selectedUserId)!;
+    return this.users.find((user) => user.id === this.selectedUserId);
   }
   // event handler
   selectUserTasks(id: string) {
