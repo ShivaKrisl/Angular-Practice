@@ -9,6 +9,8 @@
 </section>
 <ul>
   @for(task of getSelectedUserTasks; track task.id){
-  <li><app-task [task]="task"></app-task></li>
+  <li>
+    <app-task (completetask)="completeTask($event)" [task]="task"></app-task>
+  </li>
   }
 </ul>
