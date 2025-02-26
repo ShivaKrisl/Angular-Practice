@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+
+@if(isAddTaskVisible){
+<app-new-task (cancel)="onClearAddTask()"></app-new-task>
+}
+
 <section id="tasks">
   <header>
     <h2>{{ name() }}</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onAddTask()">Add Task</button>
     </menu>
   </header>
 </section>
