@@ -1,8 +1,9 @@
 import { Component, input } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { dummyTasks } from '../dummy_tasks';
-import { ITask } from '../ITask';
+import { ITask, AddTaskData } from '../ITask';
 import { NewTaskComponent } from '../new-task/new-task.component';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-tasks',
@@ -31,6 +32,23 @@ export class TasksComponent {
   }
 
   onClearAddTask() {
+    this.isAddTaskVisible = false;
+  }
+
+  onAddTaskSubmit(task: AddTaskData) {
+    // convert AddTaskData to ITask
+    const newTask: ITask = {
+      id: uuid().toString(),
+      title: task.title,
+      userId: this.userid(),
+      summary: task.summary,
+      dueDate: task.dueDate,
+    };
+
+    // add it to the tasks array
+    this.tasks.push(newTask);
+
+    // close the dialog
     this.isAddTaskVisible = false;
   }
 }

@@ -8,6 +8,7 @@ import {
   output,
 } from '@angular/core';
 import { DUMMY_USERS } from '../dummy_users';
+import { CardComponent } from '../shared/card/card.component';
 
 interface IUser {
   id: string;
@@ -17,7 +18,7 @@ interface IUser {
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })

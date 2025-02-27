@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
 @if(isAddTaskVisible){
-<app-new-task (cancel)="onClearAddTask()"></app-new-task>
+<app-new-task
+  (cancel)="onClearAddTask()"
+  (addTaskData)="onAddTaskSubmit($event)"
+></app-new-task>
 }
 
 <section id="tasks">
